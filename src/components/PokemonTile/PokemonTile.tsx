@@ -5,7 +5,8 @@ export default function PokemonTile() {
     return (
         <>
             <div className='PokemonTile'>
-                 <img src={pokBoll} alt="" />
+                <img src={pokBoll} alt="" />
+                <div className='id'><p>#id</p></div>
             </div>
         </>
     )
