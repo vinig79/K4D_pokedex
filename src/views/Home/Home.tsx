@@ -17,6 +17,7 @@ export default function Home(){
                 <p>Procure pelo Pokemon desejado utilizando seu nome ou ID</p>
             </div>
             <PokemonTile/>
+            <PokemonTile/>
         </>
     );
 }

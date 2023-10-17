@@ -1,6 +1,6 @@
 .PokemonTile {
     height: 100px;
-    margin: 0px 20px 0px 20px;
+    margin: 0px 20px 70px 20px;
     background-color: #F7D02C;
     display: flex;
     flex-direction: row-reverse;
@@ -27,3 +27,7 @@
 
 }
 
+.PokemonTile #pokemon{
+    position:absolute;
+    margin-bottom: 55px;
+}
