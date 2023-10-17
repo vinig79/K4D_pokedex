@@ -1,0 +1,78 @@
+.container{
+    filter: drop-shadow(0px 6px 0 #792524)
+}
+
+.NavBar {
+    background-color: #CC3D39;
+    clip-path: polygon(100% 0, 100% 82%, 61% 82%, 51% 100%, 0 100%, 0 0);
+    height: 100px;
+  }
+
+.container .NavBar .Search  {
+    margin: 20px;
+    border-radius: 5px;
+    border: none;
+    float: right;
+    background-color: #B73832;
+    
+}
+.container .NavBar .Search img{
+    margin: 7px 10px 0px 0px;
+    cursor: pointer;
+}
+  
+.container .NavBar .Search input {
+  background-color: transparent;
+  border:  none;
+  font-size: 16px;
+  outline: none;
+  float: left;
+  padding: 10px 30px 10px 10px;  
+}
+
+input::placeholder{
+  font-family: 'Open Sans', sans-serif;
+  color: #F0CAC8;
+}
+  
+
+.esfera {
+  border-radius: 50%;
+  border: 3px solid white;
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+}
+.azul {
+  background-color: #6794CB;
+  margin: 20px 10px 10px 20px;
+  width: 50px;
+  height: 50px;
+}
+.marrom {
+  background-color: #611B1D;
+  width: 20px;
+  height: 20px;
+  margin-bottom: 40px;
+}
+.amarela {
+  background-color: #E5A100;
+  width: 20px;
+  height: 20px;
+  margin: 0px 0px 40px 10px;
+}
+.verde {
+  background-color: #8E9551;
+  width: 20px;
+  height: 20px;
+  margin: 0px 0px 40px 10px;
+}
+.pequena-esfera {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+}

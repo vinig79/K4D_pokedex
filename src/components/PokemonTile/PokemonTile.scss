@@ -1,0 +1,15 @@
+.PokemonTile {
+    height: 100px;
+    margin: 0px 20px 0px 2%;
+    background-color: #F7D02C;
+    display: flex;
+    flex-direction: row-reverse;
+    border-radius: 20px;
+}
+.PokemonTile img{
+    margin: 0px 10px 0px 0px;
+    height: 150px;
+    width: 150px;
+    align-self:center;
+    flex-direction: row;
+}
