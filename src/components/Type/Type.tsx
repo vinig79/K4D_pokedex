@@ -1,9 +1,13 @@
-import './';
+import './Type.scss'
 
 export default function Type(){
     return(
         <>
-            <h1>type</h1>
+            <div className='Type'>
+                <p>
+                    Eletric
+                </p>
+            </div>
         </>
     )
 }

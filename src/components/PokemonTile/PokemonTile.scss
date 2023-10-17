@@ -1,11 +1,12 @@
 .PokemonTile {
-    height: 100px;
+    height: 110px;
     margin: 0px 20px 70px 20px;
     background-color: #F7D02C;
     display: flex;
     flex-direction: row-reverse;
     border-radius: 20px;
 }
+
 .PokemonTile img{
     margin: 0px 10px 0px 0px;
     height: 150px;
@@ -18,16 +19,23 @@
 }
 
 .PokemonTile .data #id{
+    font-size: 18px;
     margin:  10px 0px 0px 0px;
 }
 .PokemonTile .data #nome{
     margin: 0;
-    color: white;
+    color: whitesmoke;
     font-size: 30px;
+    font-weight:600;
 
 }
 
 .PokemonTile #pokemon{
     position:absolute;
-    margin-bottom: 55px;
+    margin: 0px 0px 55px 0px;
+}
+
+.PokemonType{
+    display: flex;
+    flex-direction: row;
 }
