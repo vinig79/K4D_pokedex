@@ -13,6 +13,17 @@
     align-self:center;
 }
 
-.PokemonTile .id {
-    margin: 0px auto 0px 10px;
-  }
+.PokemonTile .data {
+    margin: 0px auto 0px 15px;
+}
+
+.PokemonTile .data #id{
+    margin:  10px 0px 0px 0px;
+}
+.PokemonTile .data #nome{
+    margin: 0;
+    color: white;
+    font-size: 30px;
+
+}
+
