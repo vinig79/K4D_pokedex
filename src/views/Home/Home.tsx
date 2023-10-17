@@ -3,6 +3,7 @@ import './Home.scss';
 //components 
 import SearchBar from '../../components/SearchBar/SearchBar';
 import PokemonTile from '../../components/PokemonTile/PokemonTile';
+import Footer from '../../components/Footer/Footer';
 
 export default function Home(){
     useEffect(() =>{
@@ -18,6 +19,8 @@ export default function Home(){
             </div>
             <PokemonTile/>
             <PokemonTile/>
+            <PokemonTile/>  
+            <Footer/>
         </>
     );
 }
