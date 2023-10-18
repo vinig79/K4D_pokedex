@@ -9,10 +9,12 @@ type url = { url: string }
 type resultsInter = { results: url[] }
 type resultType = resultsInter | object
 
+const LIMIT: number = 3;
 
 export default function Home(){
     const [info, setInfo] = useState<resultType>([])
     const [data, setData] = useState<string>('')
+    const [offset, setOffset] = useState<number>(0)
 
     
     
@@ -26,15 +28,16 @@ export default function Home(){
             setInfo({ "results" : [{"url" : `https://pokeapi.co/api/v2/pokemon/${data}`}]})
             console.log("oi")   
     }else if(!data){
-        fetch(`https://pokeapi.co/api/v2/pokemon?limit=3`)
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=${LIMIT}&offset=${offset}`)
         .then((response) => { return response.json()})
         .then((response) => {
             setInfo(response)
         })
     }
 
-    }, [data]);
+    }, [data, offset]);
    
+    console.log(offset)
 
     return(
         <>
@@ -50,7 +53,7 @@ export default function Home(){
                 
             })}
 
-            <Footer/>
+            <Footer limit={LIMIT} total={60} setOffset={ setOffset } offset={offset} />
         </>
     );
 }
