@@ -14,6 +14,7 @@ footer{
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .NextPage{
@@ -21,6 +22,7 @@ footer{
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .Page{
@@ -36,4 +38,10 @@ footer{
     margin-top: 7px;
     font-size: 28px;
     color: #8E2C2B;
+}
+
+img{
+    height: 40px;
+    margin: 5px 0px 0px 3px;
+
 }
