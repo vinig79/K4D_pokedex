@@ -5,44 +5,51 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import PokemonTile from '../../components/PokemonTile/PokemonTile';
 import Footer from '../../components/Footer/Footer';
 
+type url = { url: string }
+type resultsInter = { results: url[] }
+type resultType = resultsInter | object
+
+
 export default function Home(){
-    const [info, setInfo] = useState<[]>([])
+    const [info, setInfo] = useState<resultType>([])
     const [data, setData] = useState<string>('')
-    const [getItem, setGetItem] = useState<boolean>(true)
+
     
     
+    useEffect(()=>{
+        document.title = "Home";
+    })
 
     useEffect(() =>{
-        document.title = "Home";
-        if(data){
-        fetch(`https://pokeapi.co/api/v2/pokemon/${data}`)
-            .then((response) => { return response.json()})
-            .then((response) => {
-                setInfo(response)
-                console.log(info)
-            })
-            
-        }else if(getItem){
-            fetch(`https://pokeapi.co/api/v2/pokemon?limit=3`)
-            .then((response) => { return response.json()})
-            .then((response) => {
-                setInfo(response)
-                setGetItem(false)
-            })
-        }
+        
+    if(data){
+            setInfo({ "results" : [{"url" : `https://pokeapi.co/api/v2/pokemon/${data}`}]})
+            console.log("oi")   
+    }else if(!data){
+        fetch(`https://pokeapi.co/api/v2/pokemon?limit=3`)
+        .then((response) => { return response.json()})
+        .then((response) => {
+            setInfo(response)
+        })
+    }
 
-    });
+    }, [data]);
    
 
     return(
         <>
-            <SearchBar value={data} onChange={(search) => {setData(search)}}/>
+            <SearchBar value={data} onChange={ (search:any) => { setData(search) }}/>
+            
             <div className='InfoTile'>
                 <h1>Pokédex</h1>
                 <div id='linha'></div>
                 <p>Procure pelo Pokemon desejado utilizando seu nome ou ID</p>
             </div>
-             
+            {info.results &&  info.results.map(( pok: object , index:number) => {
+                return <PokemonTile key={index} url={pok.url} />
+                
+            })}
+
             <Footer/>
         </>
     );
