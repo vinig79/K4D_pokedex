@@ -1,15 +1,17 @@
-import React , { ChangeEvent , useState} from 'react';
+import React from 'react';
 import './SearchBar.scss';
 import lupa from '../../assets/lupa.png'
 
-export default function SearchBar(){
-    const [data, setData] = useState({data:""})
+interface SearchProps {
+    value: string
+    onChange: (searchTerm: string) => void;
+}
 
-    const handleInput = (event: ChangeEvent<HTMLInputElement>) =>{
-        setData({...data, [event.target.name]: event.target.value});
-    }
-
+export default function SearchBar({value, onChange}:SearchProps){
     
+    function handleChange(event: React.ChangeEvent<HTMLInputElement>){
+        onChange(event.target.value)
+    }
 
     return(
         <>
@@ -24,7 +26,7 @@ export default function SearchBar(){
                     <div className="esfera verde"></div>
 
                     <div className='Search'>
-                        <input type="text" placeholder='Search' name='data' onChange={handleInput}/>
+                        <input type="text" placeholder='Search' name='data' value={value} onChange={handleChange}/>
                         <img src={lupa} alt="" />
                     </div>
                 </div>
