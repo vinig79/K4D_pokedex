@@ -1,52 +1,92 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
+
 import './PokemonTile.scss';
-import Type from '../Type/Type.tsx'
-import pokBoll from '../../assets/pokeball-watermark.png';
+import colors from '../../func/type-colors.ts';
+import Type from '../Type/Type.tsx';
+import pokBoll from '../../assets/images/pokeball-watermark.png';
 
 
-interface data {
-    id  : string,
-    src : string,
-    name: string
+interface TypeRaw {
+    type: {
+        name: string;
+    };
 }
 
-interface pokemonProps {
-    url: string,
+interface DataPok {
+    id: number;
+    src: string;
+    name: string;
 }
 
-export default function PokemonTile({ url }: pokemonProps){
-    const [data, setData] = useState<data>({'id': '', 'src':'', 'name':''})
+interface PokemonProps {
+    url: string;
+}
 
-    fetch(`${url}`).then((response) =>{return response.json()}).then((response) =>{
-        const id_b : number = response.id
-        const src  : string = response.sprites.other['official-artwork'].front_default
-        const name : string = response.name
-        let   id   : string 
+export default function PokemonTile({ url }: PokemonProps) {
+    const navigate = useNavigate();
 
-        if( id_b < 10){
-            id = `#00${id_b}`
-        }else if (id_b < 100){
-            id = `#0${id_b}`
-        }else{
-            id = `#${id_b}`
+    const [data, setData] = useState<DataPok>({ id: 0, src: '', name: '' });
+    const [typeRaw, setTypeRaw] = useState<TypeRaw[] | undefined>(undefined);
+    const [typeProcessed, setTypeProcessed] = useState<{ type1: string; type2?: string }>();
+
+
+    useEffect(() => {
+        fetch(`${url}`)
+            .then((response) => response.json())
+            .then((response) => {
+                const id: number = response.id;
+                const src: string = response.sprites.other['official-artwork'].front_default;
+                const name: string = response.name;
+                setData({ id: id, src: src, name: name });
+                setTypeRaw(response.types);
+            });
+    }, [url]);
+
+    useEffect(() => {
+        if (typeRaw) {
+            const types: string[] = [];
+            for (const type of typeRaw) {
+                types.push(type.type.name);
+            }
+            if (types.length === 1) {
+                setTypeProcessed({ type1: types[0] });
+            } else if (types.length >= 2) {
+                setTypeProcessed({ type1: types[0], type2: types[1] });
+            }
         }
-        setData({'id':id, 'src':src, 'name':name})
-        
-    })
+        console.log(typeProcessed)
+    },  [typeRaw, typeProcessed]);
 
-     
+    const stringHandler = (inputNumber: number) => {
+        let id: string
+        if (inputNumber < 10) {
+            id = `#00${inputNumber}`;
+        } else if (inputNumber < 100) {
+            id = `#0${inputNumber}`;
+        } else {
+            id = `#${inputNumber}`;
+        }
+
+        return id
+    };
+    
+
     return (
         <>
-            <div className='PokemonTile'>
-                <img src={pokBoll} alt="" id='pokeboll' />
-                <img src={data.src} alt="" id='pokemon'  />
+            <div className='PokemonTile' style={{ backgroundColor: typeProcessed?.type1 ? colors[typeProcessed.type1] : 'white' }} onClick={ () =>{ navigate(`/pokemon?id=${data.id}`)}}>
+                <img src={pokBoll} alt='' id='pokeboll' />
+                <img src={data.src} alt='' id='pokemon' />
                 <div className='data'>
-                    <p id='id'>{data.id}</p>
+                    <p id='id'>{stringHandler(data.id)}</p>
                     <p id='nome'>{data.name}</p>
-                    <div className='PokemonType'><Type/><Type/> </div>
+                    <div className='PokemonType'>
+                    {typeProcessed?.type1 && Object.entries(typeProcessed).map(([key, value]) => (
+                        <Type typePok={value} key={key}/>
+                    ))}
+                    </div>
                 </div>
-                
             </div>
         </>
-    )
+    );
 }

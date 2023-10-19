@@ -1,12 +1,12 @@
 import {useRef } from 'react'
-export default function useDebounce(fn: () => void , delay:number){
+export default function useDebounce<T>(fn: (arg: T) => void , delay:number){
     
     const timeoutRef = useRef<number>()
 
-    function decounceFn(...args:any){
+    function decounceFn(arg: T){
         window.clearInterval(timeoutRef.current)
         timeoutRef.current = window.setTimeout(()=>{
-            fn(...args)
+            fn(arg)
         },delay)
     }
 

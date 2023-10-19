@@ -1,17 +1,17 @@
 import React, {useState} from 'react';
 import useDebounce from '../../func/useDebounce';
 import './SearchBar.scss';
-import lupa from '../../assets/lupa.png'
+import lupa from '../../assets/images/lupa.png'
 
 interface SearchProps {
-    value: string
-    onChange: () => void;
+    value?: string
+    onChange?: (search:string) => void;
 }
 
 export default function SearchBar( {value, onChange}:SearchProps){
 
-    const [displayValue, setDisplayValue] = useState<string>(value)
-    const debounceChange = useDebounce(onChange, 500)
+    const [displayValue, setDisplayValue] = useState<string>(value ?? '')
+    const debounceChange = useDebounce(onChange ?? (() => {}), 500)
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>){
         setDisplayValue(event.target.value)

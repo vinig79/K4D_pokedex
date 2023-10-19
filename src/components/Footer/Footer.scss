@@ -24,6 +24,13 @@ footer{
     border-radius: 50%;
     cursor: pointer;
 }
+.NextPage img{
+    transform: scaleX(-1);
+}
+.Disabled{
+    height: 50px;
+    width: 50px;
+}
 
 .Page{
     background-color: white;
