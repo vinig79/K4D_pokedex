@@ -1,6 +1,40 @@
-.screen{
+.Screen{
     display: flex;
     flex-direction: row-reverse;
     height: 100%;
     width: 100%;
+    position: relative;
+}
+
+.Screen img{
+    position: relative;
+    height: 330px;
+    width : 330px;
+    margin-left: auto;
+    right:-60px;
+    top: -100px;
+}
+
+.Screen .infoPok #id{
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin: 15px 0px 0px 20px
+}
+
+.Screen .infoPok #name{
+    text-transform: capitalize;
+    color: white;
+    font-weight: 600;
+    font-size: 32px;
+    margin: 0px 0px 0px 20px
+}
+
+.Status{
+    background-color: white;
+    width: 800px;
+    height: 4000px;
+    margin: 0px 20px 20px 20px;
+    z-index: 1;
+    
 }

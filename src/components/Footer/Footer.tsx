@@ -9,8 +9,20 @@ type PageValues = {
 };
 
 export default function Footer({ limit, total, offset, setOffset }: PageValues) {
-  const currentPage: number = offset && limit ? offset / limit + 1 : 1;
-  const totalPages = limit && total? Math.ceil(total / limit) : 0;
+  let currentPage: number;
+  if (offset !== undefined && limit !== undefined) {
+      currentPage = offset / limit + 1;
+  } else {
+      currentPage = 1;
+  }
+
+  let totalPages: number;
+  if (limit && total) {
+      totalPages = Math.ceil(total / limit);
+  } else {
+      totalPages = 0;
+  }
+
 
   const handlePageChange = (page: number) => {
     if (setOffset) {
@@ -19,10 +31,25 @@ export default function Footer({ limit, total, offset, setOffset }: PageValues) 
   };
 
   const renderPageNavigation = (isNext: boolean) => {
-    const isDisabled = isNext ? currentPage >= totalPages : currentPage <= 1;
-
+    let isDisabled: boolean;
+    if (isNext) {
+        isDisabled = currentPage >= totalPages;
+    } else {
+        isDisabled = currentPage <= 1;
+    }
+    
+    let pageStatus: string
+    if(isDisabled){
+        pageStatus = 'Disabled'
+    }else if(isNext){
+      pageStatus = 'NextPage'
+    }else{
+      pageStatus = 'BackPage'
+    }
+   
+    
     return (
-      <div className={isDisabled ? 'Disabled' : isNext ? 'NextPage' : 'BackPage'}>
+      <div className={ pageStatus }>
         {!isDisabled && (
           <img
             src={seta}

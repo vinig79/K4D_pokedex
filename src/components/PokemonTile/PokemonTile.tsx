@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import './PokemonTile.scss';
 import colors from '../../func/type-colors.ts';
 import Type from '../Type/Type.tsx';
-import pokBoll from '../../assets/images/pokeball-watermark.png';
+import pokBall from '../../assets/images/pokeball-watermark.png';
 
 
 interface TypeRaw {
@@ -55,8 +55,7 @@ export default function PokemonTile({ url }: PokemonProps) {
                 setTypeProcessed({ type1: types[0], type2: types[1] });
             }
         }
-        console.log(typeProcessed)
-    },  [typeRaw, typeProcessed]);
+    },  [typeRaw]);
 
     const stringHandler = (inputNumber: number) => {
         let id: string
@@ -74,8 +73,8 @@ export default function PokemonTile({ url }: PokemonProps) {
 
     return (
         <>
-            <div className='PokemonTile' style={{ backgroundColor: typeProcessed?.type1 ? colors[typeProcessed.type1] : 'white' }} onClick={ () =>{ navigate(`/pokemon?id=${data.id}`)}}>
-                <img src={pokBoll} alt='' id='pokeboll' />
+            <div className='PokemonTile' style={{ backgroundColor: typeProcessed?.type1 ? colors.colorsTile[typeProcessed.type1] : 'white' }} onClick={ () =>{ navigate(`/pokemon?id=${data.id}`)}}>
+                <img src={pokBall} alt='' id='pokeboll' />
                 <img src={data.src} alt='' id='pokemon' />
                 <div className='data'>
                     <p id='id'>{stringHandler(data.id)}</p>

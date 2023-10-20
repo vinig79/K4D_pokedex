@@ -5,7 +5,8 @@ import SearchBar from '../../components/SearchBar/SearchBar';
 import PokemonTile from '../../components/PokemonTile/PokemonTile';
 import Footer from '../../components/Footer/Footer';
 
-type Url = { url: string };
+
+type Url = { url: string , name?:string};
 type ResultsInter = { results: Url[] };
 type ResultType = ResultsInter | object;
 
@@ -54,8 +55,8 @@ export default function Home() {
                 <p>Procure pelo Pokemon desejado utilizando seu nome ou ID</p>
             </div>
             {('results' in info && Array.isArray(info.results)) &&
-                info.results.map((pok: Url, index: number) => (
-                    <PokemonTile key={index} url={pok.url} />
+                info.results.map((pok: Url) => (
+                    <PokemonTile key={pok.name} url={pok.url} />
                 ))
             }
 

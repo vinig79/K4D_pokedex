@@ -5,8 +5,8 @@ import SearchBar from "../../components/SearchBar/SearchBar"
 import Footer from "../../components/Footer/Footer"
 
 import './Pokemon.scss'
-import colors from "../../func/type-colors"
-import pokeBoll from '../../assets/images/pokeball-watermark.png'
+import colors  from "../../func/type-colors"
+import pokeBall from '../../assets/images/pokeball-watermark.png'
 
 interface TypeRaw {
     type: {
@@ -64,7 +64,7 @@ export default function Pokemon(){
         document.title = "Home";
         const rootElement = document.querySelector('#root') as HTMLElement;
         if (rootElement) {
-            rootElement.style.backgroundColor = typeProcessed?.type1 ? colors[typeProcessed.type1] : 'white';
+            rootElement.style.backgroundColor = typeProcessed?.type1 ? colors.colorsTile[typeProcessed.type1] : 'white';
         }
     }, [typeProcessed]);
 
@@ -86,7 +86,14 @@ export default function Pokemon(){
     return(
         <>
             <SearchBar/>
-            <div className='screen'>  <img src={pokeBoll} alt="" /> {stringHandler(data.id)}</div>
+            <div className='Screen'>  
+                <img src={pokeBall} alt="" /> 
+                <div className='infoPok'>
+                    <p id='id'>{stringHandler(data.id)}</p>
+                    <p id='name'>{data.name}</p>
+                </div>
+            </div>
+            <div className='Status'></div>
             <Footer/>
         </>
     )

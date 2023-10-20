@@ -1,14 +1,14 @@
 import './Type.scss'
 import colors from '../../func/type-colors'
 
-interface typePok {
+interface TypePok {
     typePok: string
 }
 
-export default function Type({typePok}:typePok){
+export default function Type({typePok}:TypePok){
     return(
         <>
-            <div className='Type' style={{backgroundColor: colors[typePok]}}>
+            <div className='Type' style={{backgroundColor: colors.colorsType[typePok]}}>
                 <p>
                     {typePok}
                 </p>
