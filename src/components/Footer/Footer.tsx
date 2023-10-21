@@ -23,7 +23,6 @@ export default function Footer({ limit, total, offset, setOffset }: PageValues) 
       totalPages = 0;
   }
 
-
   const handlePageChange = (page: number) => {
     if (setOffset) {
       setOffset( limit ? (page - 1) * limit : 0);

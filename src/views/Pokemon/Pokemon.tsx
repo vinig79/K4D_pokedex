@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
-
+import {FaWeightHanging , FaRuler} from "react-icons/fa"
 
 import SearchBar from "../../components/SearchBar/SearchBar"
 import Footer from "../../components/Footer/Footer"
-
+import Type from '../../components/Type/Type';
 import './Pokemon.scss'
 import colors  from "../../func/type-colors"
 import pokeBall from '../../assets/images/pokeball-watermark.png'
@@ -66,6 +66,10 @@ export default function Pokemon(){
         if (rootElement) {
             rootElement.style.backgroundColor = typeProcessed?.type1 ? colors.colorsTile[typeProcessed.type1] : 'white';
         }
+        const infoEement = document.querySelector('#Info') as HTMLElement
+        if (infoEement){
+            infoEement.style.color = typeProcessed?.type1 ? colors.colorsTile[typeProcessed.type1]: 'white';
+        }
     }, [typeProcessed]);
 
 
@@ -92,8 +96,27 @@ export default function Pokemon(){
                     <p id='id'>{stringHandler(data.id)}</p>
                     <p id='name'>{data.name}</p>
                 </div>
+                
             </div>
-            <div className='Status'></div>
+            <div className='Status'>
+                <div id='pok'>
+                    <img  src={data.src} alt="" />
+                    <div className='pokType'>
+                        {typeProcessed?.type1 && Object.entries(typeProcessed).map(([key, value]) => (
+                            <Type typePok={value} key={key}/>
+                        ))}
+                    </div>
+                    
+                </div>
+                <div className='Info'>
+    
+                    <h1 id='Info'>Info</h1>
+                    <div className='Peso'><FaWeightHanging/></div>
+                    <div className='Altura'><FaRuler/></div>
+                    <div className='Sexo'><p>Male</p></div>
+                </div> 
+            </div>
+            
             <Footer/>
         </>
     )

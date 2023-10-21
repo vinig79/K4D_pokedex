@@ -3,7 +3,7 @@
 }
 .InfoTile{
     width: 300px;
-    margin: 15px 0px 40px 20px
+    margin: 15px 0px 30px 20px
 }
 
 .InfoTile h1{
@@ -20,4 +20,7 @@
     height: 5px;
     border-radius: 5px;
     background: #8E2C2B;
+}
+.Home{
+    z-index: 1;
 }

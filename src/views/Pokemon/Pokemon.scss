@@ -1,40 +1,104 @@
-.Screen{
+.Screen {
+    position: relative; /* Definido como relativo */
     display: flex;
     flex-direction: row-reverse;
     height: 100%;
     width: 100%;
-    position: relative;
 }
 
-.Screen img{
-    position: relative;
-    height: 330px;
-    width : 330px;
+.Screen img {
+    position: absolute; /* Definido como absoluto */
+    height: 400px;
+    width: 400px;
     margin-left: auto;
-    right:-60px;
-    top: -100px;
+    right: -60px;
+    top: -110px;
 }
-
-.Screen .infoPok #id{
+.Screen .infoPok{
+    margin-right: auto;
+}
+.Screen .infoPok #id {
     font-size: 20px;
     font-weight: 600;
     color: white;
-    margin: 15px 0px 0px 20px
+    margin: 15px 0px 0px 20px;
 }
 
-.Screen .infoPok #name{
+.Screen .infoPok #name {
     text-transform: capitalize;
     color: white;
     font-weight: 600;
     font-size: 32px;
-    margin: 0px 0px 0px 20px
+    margin: 0px 0px 0px 20px;
 }
 
-.Status{
+.Status {
     background-color: white;
-    width: 800px;
     height: 4000px;
     margin: 0px 20px 20px 20px;
-    z-index: 1;
+    border-radius: 15px;
+    position: relative; 
+}
+
+.Status #pok {
+    margin-left: 40%;
     
 }
+
+.Status #pok img{
+    position: absolute;
+    height: 250px;
+    top:-140px
+}
+
+.Status #pok .pokType{
+    display: flex;
+    justify-content: center ;
+    width: 280px;
+    flex-direction: row;
+    margin: 110px 0px 0px -25px;
+}
+
+.Status .Info{
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0px 0px 0px;
+    position: relative;
+   
+}
+
+.Status .Info #Info{
+    margin: 0px 0px 0px 45%;
+    font-size: 45px;
+
+}
+
+
+@media only screen and (max-width: 1000px) {
+    .Status{
+        margin-top: 130px;
+        
+    }
+    .Status #pok {
+        margin-left: 33%;
+        
+    }
+    .Status #pok img{
+        position: absolute;
+        height: 200px;
+        top:-130px
+    }
+    
+    .Status #pok .pokType{
+        display: flex;
+        margin: 80px 0px 0px -25px;
+    }
+    .Status #pok img{
+        top:-140px
+    }
+    .Status .Info #Info{
+        font-size: 45px;
+    
+    }
+    
+  }

@@ -10,19 +10,21 @@ type Url = { url: string , name?:string};
 type ResultsInter = { results: Url[] };
 type ResultType = ResultsInter | object;
 
-const LIMIT: number = 3;
+const LIMIT : number = 3
 
 export default function Home() {
     const [info, setInfo] = useState<ResultType>({});
     const [data, setData] = useState<string>('');
     const [offset, setOffset] = useState<number>(0);
+    
+
 
     useEffect(() => {
         document.title = "Home";
         const rootElement = document.querySelector('#root') as HTMLElement;
         if (rootElement) {
             rootElement.style.backgroundColor = 'white';
-        }
+        }  
     }, []);
 
     useEffect(() => {
@@ -43,23 +45,23 @@ export default function Home() {
                     console.error(error);
                 });
         }
-    }, [data, offset]);
+    }, [data, offset, LIMIT]);
 
     return (
         <>
             <SearchBar value={data} onChange={(search:string) => { setData(search) }} />
-
-            <div className='InfoTile'>
-                <h1>Pokédex</h1>
-                <div id='linha'></div>
-                <p>Procure pelo Pokemon desejado utilizando seu nome ou ID</p>
+            <div className='Home'>
+                <div className='InfoTile'>
+                    <h1>Pokédex</h1>
+                    <div id='linha'></div>
+                    <p>Procure pelo Pokemon desejado utilizando seu nome ou ID</p>
+                </div>
+                {('results' in info && Array.isArray(info.results)) &&
+                    info.results.map((pok: Url) => (
+                        <PokemonTile key={pok.name} url={pok.url} />
+                    ))
+                }
             </div>
-            {('results' in info && Array.isArray(info.results)) &&
-                info.results.map((pok: Url) => (
-                    <PokemonTile key={pok.name} url={pok.url} />
-                ))
-            }
-
             <Footer limit={LIMIT} total={60} setOffset={setOffset} offset={offset} />
         </>
     );
