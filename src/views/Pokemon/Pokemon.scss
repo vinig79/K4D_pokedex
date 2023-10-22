@@ -61,7 +61,7 @@
 
 .Status .Info{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
     margin: 10px 0px 0px 0px;
     position: relative;
@@ -74,6 +74,28 @@
     flex: 0;
 
 }
+
+.Status .Info .GeneralStats{
+    display: flex;
+    flex-direction: row;
+}
+
+.Status .Info .GeneralStats .Peso, .Altura, .Sexo{
+    display: flex;
+    flex-direction: row;
+    width: 23.3%;
+    margin-left: 10%;
+}
+
+.Status .Info .GeneralStats .Peso h1{
+    margin: 0px;
+}
+
+svg{
+    width: 50px;
+    height: 50px;
+}
+
 
 
 

@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
-import {FaWeightHanging , FaRuler} from "react-icons/fa"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import SearchBar from "../../components/SearchBar/SearchBar"
 import Footer from "../../components/Footer/Footer"
@@ -111,9 +112,20 @@ export default function Pokemon(){
                 <div className='Info'>
     
                     <h1 id='Info'>Info</h1>
-                    <div className='Peso'><FaWeightHanging/></div>
-                    <div className='Altura'><FaRuler/></div>
-                    <div className='Sexo'><p>Male</p></div>
+                    <div className='GeneralStats'>
+                        <div className='Peso'>
+                            
+                            <h1>10kg</h1>
+                        </div>
+                        <div className='Altura'>
+                            <FontAwesomeIcon icon={solid("ruler")} style={{color: "#cdcdcd",}} />       
+                            <h1>25cm</h1> 
+                        </div>
+                        <div className='Sexo'>
+                            <FontAwesomeIcon icon="fa-solid fa-venus-mars" style={{color: "#cdcdcd",}} />
+                            <h1>Male</h1>
+                        </div>
+                    </div>
                 </div> 
             </div>
             
