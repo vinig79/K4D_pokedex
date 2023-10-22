@@ -21,3 +21,10 @@ body{
     overflow: hidden;
     
 }
+
+@media only screen and (max-height: 1100px){
+    body{
+        zoom: 70%;
+    }
+    
+}
