@@ -1,5 +1,5 @@
 .Screen {
-    position: relative; /* Definido como relativo */
+    position: relative; 
     display: flex;
     flex-direction: row-reverse;
     height: 100%;
@@ -7,12 +7,12 @@
 }
 
 .Screen img {
-    position: absolute; /* Definido como absoluto */
-    height: 400px;
-    width: 400px;
+    position: absolute; 
+    height: 600px;
+    width: 600px;
     margin-left: auto;
-    right: -60px;
-    top: -110px;
+    right: -150px;
+    top: -150px;
 }
 .Screen .infoPok{
     margin-right: auto;
@@ -34,7 +34,7 @@
 
 .Status {
     background-color: white;
-    height: 4000px;
+    height: 2000px;
     margin: 0px 20px 20px 20px;
     border-radius: 15px;
     position: relative; 
@@ -78,29 +78,96 @@
 .Status .Info .GeneralStats{
     display: flex;
     flex-direction: row;
+    margin-top: 10px;
+    padding-left: 2%;
 }
 
 .Status .Info .GeneralStats .Peso, .Altura, .Sexo{
     display: flex;
     flex-direction: row;
-    width: 23.3%;
-    margin-left: 10%;
-}
-
-.Status .Info .GeneralStats .Peso h1{
-    margin: 0px;
-}
-
-svg{
-    width: 50px;
+    border-bottom: 4px solid #cdcdcd;
+    width: 32%;
     height: 50px;
 }
 
 
 
+.Status .Info .GeneralStats  .Altura{
+    border: 4px solid #cdcdcd;
+    border-top: none;
+}
+
+.Status .Info .GeneralStats h1{
+    font-size: 24px;
+    margin: 5px 0px 0px 0px;
+    color: #888484
+}
+
+.FontAwesomeIcon{
+    height: 40px;
+    margin: 0px 40px 0px 40px;
+}
+
+.SpecificStats{
+    display: flex;
+    margin-left: 1%;
+}
+
+.Stat{
+    width: 50%;
+}
+
+#Stat{
+    font-size: 36px ;
+    margin-left: 30%;
+    margin-top: 30px;
+    margin-bottom:30px ;
+}
+
+.gridContainer{
+    width: 50%;
+}
+
+.gridContainer h1{
+    font-size: 29px ;
+    margin-left: 20%;
+    margin-top: 30px;
+    margin-bottom:0px ;
+}
+
+.Grid{
+    margin: 50px 0px 0px 50px;
+    height: 20%;
+}
 
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-height: 1100px){
+    .Status #pok img{
+        height: 220px;
+        top: -170px;
+        margin: 0px 0px 0px 0%
+    }
+    .Status #pok .pokType{
+        
+        margin-left: 0%;
+        margin-top: 40px;
+    }
+    .Status .Info #Info{
+        margin: 0px 0px 0px 47%;
+    }
+  }
+ 
+
+
+@media only screen and (max-width: 900px) {
+    .Status {
+        background-color: white;
+        height: 4000px;
+        margin: 0px 20px 20px 20px;
+        border-radius: 15px;
+        position: relative; 
+    }
+    
     .Status{
         margin-top: 130px;
         
@@ -112,16 +179,16 @@ svg{
     .Status #pok img{
         position: absolute;
         height: 200px;
-        top:-130px
+        height: 250px;
+        margin: 0px;
+        top:-170px
     }
     
     .Status #pok .pokType{
         display: flex;
         margin: 80px 0px 0px -25px;
     }
-    .Status #pok img{
-        top:-140px
-    }
+   
     .Status .Info #Info{
         font-size: 45px;
     
@@ -129,17 +196,7 @@ svg{
     
   }
 
-  @media only screen and (max-height: 1100px){
-    .Status #pok img{
-        height: 220px;
-        top: -170px;
-        margin: 0px 0px 0px 10%
-    }
-    .Status #pok .pokType{
-        margin-left: 12%;
-        margin-top: 40px;
-    }
-    .Status .Info #Info{
-        margin: 0px 0px 0px 47%;
-    }
-  }
+
+
+
+  

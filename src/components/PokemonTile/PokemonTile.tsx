@@ -81,7 +81,7 @@ export default function PokemonTile({ url }: PokemonProps) {
                     <p id='nome'>{data.name}</p>
                     <div className='PokemonType'>
                     {typeProcessed?.type1 && Object.entries(typeProcessed).map(([key, value]) => (
-                        <Type typePok={value} key={key}/>
+                        <Type typePok={value} nameValue={value} key={key}/>
                     ))}
                     </div>
                 </div>

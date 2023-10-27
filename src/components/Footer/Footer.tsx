@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router';
 import seta from '../../assets/images/seta.png';
 import './Footer.scss';
 
@@ -8,7 +9,10 @@ type PageValues = {
   setOffset?: (elem: number) => void;
 };
 
-export default function Footer({ limit, total, offset, setOffset }: PageValues) {
+export default function Footer({ limit, total, offset, setOffset }: PageValues){
+   
+  const navigate = useNavigate()
+  
   let currentPage: number;
   if (offset !== undefined && limit !== undefined) {
       currentPage = offset / limit + 1;
@@ -62,7 +66,24 @@ export default function Footer({ limit, total, offset, setOffset }: PageValues) 
       </div>
     );
   };
-
+  
+  if( currentPage == 1 && totalPages ==0){
+    return(
+      <>
+        <footer >
+          <div className='BackPage'>
+            <img 
+              src={seta}
+              alt=""
+              onClick={() => {
+               navigate('/')
+              }}
+            />
+          </div>
+      </footer>
+      </>
+    )
+  }
   return (
     <footer>
       {renderPageNavigation(false)}
